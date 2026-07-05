@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import Header from '../components/Header.astro';
 import { absoluteUrl, normalizeCanonical, site } from '../lib/site';
 
@@ -47,6 +48,7 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : undefined;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
     {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}
+    <Analytics />
     <title>{title}</title>
     <style is:global>
       :root {
