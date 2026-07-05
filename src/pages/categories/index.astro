@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('blog');
+const categories = [...new Set(posts.flatMap((post) => post.data.categories))].sort((a, b) => b.localeCompare(a, 'zh-CN'));
+---
+
+<BaseLayout title="分类 | 贺文杰的博客">
+  <h1 class="page-title">分类</h1>
+  <div class="term-grid">
+    {categories.map((category) => <a href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>)}
+  </div>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { entry } = Astro.props;
+const { title, pubDate, tags, categories } = entry.data as {
+  title: string;
+  pubDate: Date;
+  tags: string[];
+  categories: string[];
+};
+const date = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(pubDate);
+---
+
+<BaseLayout title={`${title} | 贺文杰的博客`} description={entry.data.description ?? title}>
+  <article class="post">
+    <p class="post-meta">{date}</p>
+    <h1>{title}</h1>
+    <div class="chips">
+      {categories.map((category) => <a class="chip" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>)}
+      {tags.map((tag) => <a class="chip" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+    </div>
+    <div class="post-content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

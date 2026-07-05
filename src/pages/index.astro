@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout>
+  <section>
+    <h1 class="page-title">文章归档</h1>
+    <p class="page-subtitle">从旧静态博客迁移而来的文章，保留原始路径和分类标签。</p>
+  </section>
+  <section class="post-list">
+    {posts.map((post) => (
+      <a class="post-item" href={post.data.permalink}>
+        <p class="post-meta">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+        <h2>{post.data.title}</h2>
+        {post.data.description && <p>{post.data.description}</p>}
+        <div class="chips">
+          {post.data.tags.slice(0, 4).map((tag) => <span class="chip">#{tag}</span>)}
+        </div>
+      </a>
+    ))}
+  </section>
+</BaseLayout>

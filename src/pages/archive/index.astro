@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const groups = Map.groupBy(posts, (post) => String(post.data.pubDate.getFullYear()));
+---
+
+<BaseLayout title="归档 | 贺文杰的博客">
+  <h1 class="page-title">归档</h1>
+  {[...groups.entries()].map(([year, yearPosts]) => (
+    <section>
+      <h2>{year}</h2>
+      <div class="post-list">
+        {yearPosts.map((post) => (
+          <a class="post-item" href={post.data.permalink}>
+            <p class="post-meta">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+            <h2>{post.data.title}</h2>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</BaseLayout>
