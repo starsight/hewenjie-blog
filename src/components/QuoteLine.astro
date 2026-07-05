@@ -1,0 +1,46 @@
+---
+import { getQuoteLines, type QuoteScene } from '../lib/quoteLines';
+
+interface Props {
+  scenes?: QuoteScene[];
+  compact?: boolean;
+}
+
+const { scenes = ['site'], compact = false } = Astro.props;
+const quotes = getQuoteLines(scenes);
+const fallback = quotes[0];
+const publicQuotes = quotes.map(({ text, source }) => ({ text, source: source ?? '' }));
+---
+
+<aside class:list={['quote-line', compact && 'quote-line--compact']} data-quote-lines={JSON.stringify(publicQuotes)}>
+  <p data-quote-text>{fallback.text}</p>
+  <footer data-quote-source hidden={!fallback.source}>{fallback.source && `- ${fallback.source}`}</footer>
+</aside>
+
+<script is:inline>
+  (() => {
+    const quoteBlocks = document.querySelectorAll('[data-quote-lines]:not([data-quote-ready])');
+    for (const block of quoteBlocks) {
+      block.setAttribute('data-quote-ready', 'true');
+
+      let quotes = [];
+      try {
+        quotes = JSON.parse(block.getAttribute('data-quote-lines') || '[]');
+      } catch {
+        quotes = [];
+      }
+
+      if (!quotes.length) continue;
+
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      const text = block.querySelector('[data-quote-text]');
+      const source = block.querySelector('[data-quote-source]');
+
+      if (text && quote.text) text.textContent = quote.text;
+      if (source) {
+        source.textContent = quote.source ? `- ${quote.source}` : '';
+        source.hidden = !quote.source;
+      }
+    }
+  })();
+</script>

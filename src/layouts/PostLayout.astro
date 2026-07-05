@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import QuoteLine from '../components/QuoteLine.astro';
 import { formatPostStats, getPostStats } from '../lib/postStats';
 import { absoluteUrl, site } from '../lib/site';
 
@@ -60,6 +61,7 @@ const structuredData = {
       {categories.map((category) => <a class="chip" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>)}
       {visibleTags.map((tag) => <a class="chip" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
     </div>
+    <QuoteLine scenes={['post']} compact />
     <div class="post-content">
       <slot />
     </div>

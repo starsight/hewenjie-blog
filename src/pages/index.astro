@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuoteLine from '../components/QuoteLine.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatPostDate, formatPostStats, getPostStats } from '../lib/postStats';
 import { absoluteUrl, site } from '../lib/site';
@@ -33,6 +34,7 @@ const structuredData = {
 <BaseLayout structuredData={structuredData}>
   <section>
     <h1 class="page-title">文章</h1>
+    <QuoteLine scenes={['home']} />
   </section>
   <section class="post-list">
     {postsWithMeta.map(({ post, stats, visibleTags }) => (

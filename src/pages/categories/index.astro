@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuoteLine from '../../components/QuoteLine.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = await getCollection('blog');
@@ -21,6 +22,7 @@ const categories = [...new Set(posts.flatMap((post) => post.data.categories))]
 
 <BaseLayout title="分类 | 贺文杰的博客" description="按主题分类浏览贺文杰博客文章，包括 Android、编程、博客、树莓派、项目、随笔和简历。">
   <h1 class="page-title">分类</h1>
+  <QuoteLine scenes={['taxonomy']} />
   <div class="term-grid">
     {categories.map((category) => (
       <a href={`/categories/${encodeURIComponent(category.name)}/`}>

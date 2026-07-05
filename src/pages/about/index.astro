@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuoteLine from '../../components/QuoteLine.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPostStats } from '../../lib/postStats';
 import { absoluteUrl, site } from '../../lib/site';
@@ -42,6 +43,8 @@ const structuredData = {
       </div>
     </div>
   </section>
+
+  <QuoteLine scenes={['about']} />
 
   <section class="about-stats" aria-label="站点统计">
     <div>

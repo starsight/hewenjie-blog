@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuoteLine from '../../components/QuoteLine.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatPostDate, formatPostStats, getPostStats } from '../../lib/postStats';
 
@@ -11,6 +12,7 @@ const groups = Map.groupBy(posts, (post) => String(post.data.pubDate.getFullYear
 
 <BaseLayout title="归档 | 贺文杰的博客" description="按年份浏览贺文杰博客中的技术文章、旧文归档和个人写作。">
   <h1 class="page-title">归档</h1>
+  <QuoteLine scenes={['archive']} />
   {[...groups.entries()].map(([year, yearPosts]) => (
     <section>
       <h2>{year}</h2>

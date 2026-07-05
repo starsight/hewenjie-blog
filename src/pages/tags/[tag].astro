@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuoteLine from '../../components/QuoteLine.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatPostDate, formatPostStats, getPostStats } from '../../lib/postStats';
 
@@ -17,6 +18,7 @@ const posts = (await getCollection('blog'))
 
 <BaseLayout title={`#${tag} | 贺文杰的博客`} description={`浏览贺文杰博客中与 ${tag} 相关的文章。`}>
   <h1 class="page-title">#{tag}</h1>
+  <QuoteLine scenes={['taxonomy']} compact />
   <section class="post-list">
     {posts.map((post) => (
       <a class="post-item" href={post.data.permalink}>
