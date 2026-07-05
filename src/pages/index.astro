@@ -9,8 +9,7 @@ const posts = (await getCollection('blog')).sort(
 
 <BaseLayout>
   <section>
-    <h1 class="page-title">文章归档</h1>
-    <p class="page-subtitle">从旧静态博客迁移而来的文章，保留原始路径和分类标签。</p>
+    <h1 class="page-title">文章</h1>
   </section>
   <section class="post-list">
     {posts.map((post) => (
