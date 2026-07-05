@@ -9,7 +9,7 @@ const posts = (await getCollection('blog')).sort(
 const groups = Map.groupBy(posts, (post) => String(post.data.pubDate.getFullYear()));
 ---
 
-<BaseLayout title="归档 | 贺文杰的博客">
+<BaseLayout title="归档 | 贺文杰的博客" description="按年份浏览贺文杰博客中的技术文章、旧文归档和个人写作。">
   <h1 class="page-title">归档</h1>
   {[...groups.entries()].map(([year, yearPosts]) => (
     <section>

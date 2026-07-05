@@ -2,16 +2,33 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPostStats } from '../../lib/postStats';
+import { absoluteUrl, site } from '../../lib/site';
 
 const posts = await getCollection('blog');
 const categories = new Set(posts.flatMap((post) => post.data.categories));
 const tags = new Set(posts.flatMap((post) => post.data.tags));
 const totalWords = posts.reduce((sum, post) => sum + getPostStats(post.body).words, 0);
+const description = '关于贺文杰：Android 工程师，关注移动端体验、稳定性、工程效率，以及 AI Agent 在研发流程里的应用。';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: site.author,
+    url: absoluteUrl('/about/'),
+    sameAs: [site.authorUrl],
+    image: absoluteUrl(site.defaultImage),
+    jobTitle: 'Android 工程师',
+    knowsAbout: ['Android', '移动端体验', '稳定性', '工程效率', 'AI Agent']
+  }
+};
 ---
 
 <BaseLayout
-  title="关于 | 贺文杰的博客"
-  description="关于贺文杰，以及这个博客记录的技术、生活和工程实践。"
+  title={`关于 | ${site.name}`}
+  description={description}
+  type="profile"
+  structuredData={structuredData}
 >
   <section class="about-hero">
     <img src="/images/starsight.png" alt="贺文杰" />

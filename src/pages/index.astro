@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatPostDate, formatPostStats, getPostStats } from '../lib/postStats';
+import { absoluteUrl, site } from '../lib/site';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -14,9 +15,22 @@ const postsWithMeta = posts.map((post) => {
     visibleTags: post.data.tags.filter((tag) => !categorySet.has(tag.toLowerCase()))
   };
 });
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: absoluteUrl('/'),
+  description: site.description,
+  inLanguage: 'zh-CN',
+  author: {
+    '@type': 'Person',
+    name: site.author,
+    url: site.authorUrl
+  }
+};
 ---
 
-<BaseLayout>
+<BaseLayout structuredData={structuredData}>
   <section>
     <h1 class="page-title">文章</h1>
   </section>

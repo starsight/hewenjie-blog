@@ -1,11 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { formatPostStats, getPostStats } from '../lib/postStats';
+import { absoluteUrl, site } from '../lib/site';
 
 const { entry } = Astro.props;
-const { title, pubDate, tags, categories } = entry.data as {
+const { title, pubDate, updatedDate, tags, categories } = entry.data as {
   title: string;
   pubDate: Date;
+  updatedDate?: Date;
   tags: string[];
   categories: string[];
 };
@@ -13,9 +15,44 @@ const date = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(pu
 const stats = formatPostStats(getPostStats(entry.body));
 const categorySet = new Set(categories.map((category) => category.toLowerCase()));
 const visibleTags = tags.filter((tag) => !categorySet.has(tag.toLowerCase()));
+const description = entry.data.description ?? title;
+const canonicalUrl = absoluteUrl(entry.data.permalink);
+const keywords = [...new Set([...categories, ...tags])];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  inLanguage: 'zh-CN',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalUrl
+  },
+  author: {
+    '@type': 'Person',
+    name: site.author,
+    url: site.authorUrl
+  },
+  publisher: {
+    '@type': 'Person',
+    name: site.author,
+    url: site.authorUrl
+  },
+  keywords,
+  image: absoluteUrl(site.defaultImage),
+  url: canonicalUrl
+};
 ---
 
-<BaseLayout title={`${title} | 贺文杰的博客`} description={entry.data.description ?? title}>
+<BaseLayout
+  title={`${title} | ${site.name}`}
+  description={description}
+  type="article"
+  canonicalPath={entry.data.permalink}
+  structuredData={structuredData}
+>
   <article class="post">
     <p class="post-meta">{date} · {stats}</p>
     <h1>{title}</h1>

@@ -15,7 +15,7 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={`${category} | 贺文杰的博客`}>
+<BaseLayout title={`${category} | 贺文杰的博客`} description={`浏览贺文杰博客中 ${category} 分类下的文章。`}>
   <h1 class="page-title">{category}</h1>
   <section class="post-list">
     {posts.map((post) => (
