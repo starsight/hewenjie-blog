@@ -3,7 +3,8 @@ title: "一次 Android 首页性能体验优化复盘"
 pubDate: 2025-01-05 20:42:44 +0800
 description: "从启动任务、首屏接口、View 预创建、图片直出和防劣化监控几个方向，复盘一次 Android 首页体验优化。"
 permalink: "/2025/01/05/android-homepage-performance-review/"
-categories: ["Android"]
+categories:
+  - 'Android'
 tags: ["Android", "性能优化", "启动优化", "工程复盘"]
 ---
 

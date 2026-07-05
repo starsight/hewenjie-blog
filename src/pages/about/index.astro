@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPostStats } from '../../lib/postStats';
+
+const posts = await getCollection('blog');
+const categories = new Set(posts.flatMap((post) => post.data.categories));
+const tags = new Set(posts.flatMap((post) => post.data.tags));
+const totalWords = posts.reduce((sum, post) => sum + getPostStats(post.body).words, 0);
+---
+
+<BaseLayout
+  title="关于 | 贺文杰的博客"
+  description="关于贺文杰，以及这个博客记录的技术、生活和工程实践。"
+>
+  <section class="about-hero">
+    <img src="/images/starsight.png" alt="贺文杰" />
+    <div>
+      <h1 class="page-title">贺文杰</h1>
+      <p class="page-subtitle">Android 工程师，关注移动端体验、稳定性、工程效率，以及 AI Agent 在研发流程里的应用。</p>
+      <div class="about-links">
+        <a href="https://github.com/starsight" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/rss.xml">RSS</a>
+        <span>emhhbmdmZW5lQGdtYWlsLmNvbQ==</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-stats" aria-label="站点统计">
+    <div>
+      <strong>{posts.length}</strong>
+      <span>文章</span>
+    </div>
+    <div>
+      <strong>{categories.size}</strong>
+      <span>分类</span>
+    </div>
+    <div>
+      <strong>{tags.size}</strong>
+      <span>标签</span>
+    </div>
+    <div>
+      <strong>{totalWords.toLocaleString('zh-CN')}</strong>
+      <span>字</span>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>个人简介</h2>
+    <p>这里是一些技术实践、旧文归档和阶段性思考。博客会尽量保留原始文章的路径和语气，同时对公开内容做必要脱敏。</p>
+  </section>
+
+  <section class="about-section">
+    <h2>关注方向</h2>
+    <ul>
+      <li>Android 性能、稳定性、工程架构和研发效率。</li>
+      <li>AI Agent 在研发场景中的工具化、流程化和知识检索。</li>
+      <li>个人知识管理、博客迁移和长期写作。</li>
+    </ul>
+  </section>
+
+  <section class="about-section">
+    <h2>经历</h2>
+    <ol class="timeline">
+      <li><span>2019.06 至今</span> Android 客户端研发</li>
+      <li><span>2016.09 - 2019.07</span> 东南大学</li>
+      <li><span>2012.09 - 2016.07</span> 长安大学</li>
+    </ol>
+  </section>
+</BaseLayout>

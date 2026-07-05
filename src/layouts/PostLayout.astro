@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { formatPostStats, getPostStats } from '../lib/postStats';
 
 const { entry } = Astro.props;
 const { title, pubDate, tags, categories } = entry.data as {
@@ -9,15 +10,18 @@ const { title, pubDate, tags, categories } = entry.data as {
   categories: string[];
 };
 const date = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(pubDate);
+const stats = formatPostStats(getPostStats(entry.body));
+const categorySet = new Set(categories.map((category) => category.toLowerCase()));
+const visibleTags = tags.filter((tag) => !categorySet.has(tag.toLowerCase()));
 ---
 
 <BaseLayout title={`${title} | 贺文杰的博客`} description={entry.data.description ?? title}>
   <article class="post">
-    <p class="post-meta">{date}</p>
+    <p class="post-meta">{date} · {stats}</p>
     <h1>{title}</h1>
     <div class="chips">
       {categories.map((category) => <a class="chip" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>)}
-      {tags.map((tag) => <a class="chip" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+      {visibleTags.map((tag) => <a class="chip" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
     </div>
     <div class="post-content">
       <slot />

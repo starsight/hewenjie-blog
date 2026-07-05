@@ -4,7 +4,7 @@ pubDate: '2026-07-05'
 description: '记录一次从旧静态博客到 Astro 的迁移过程：文章抽取、路径保留、GitHub 建仓、Vercel 部署，以及中间踩到的几个小坑。'
 permalink: '/2026/07/05/migrate-blog-to-astro/'
 categories:
-  - '2026-07'
+  - '博客'
 tags:
   - '博客迁移'
   - 'Astro'

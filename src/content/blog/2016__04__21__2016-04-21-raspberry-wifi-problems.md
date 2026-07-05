@@ -3,8 +3,8 @@ title: 'Raspberry Pi 3 wifi问题'
 pubDate: '2016-04-21'
 description: '树莓派自带wifi模块，应该说是很实用的功能，用法其实和USB wifi一样使用，但是树莓派3死活连接不上我的wifi，于是我就参照USB wifi的使用。 先用SSH登陆： 由于回宿舍，没有显示器，所以需要直接修改此文件： 按照道理说，直接点图形界面的wifi连接，输入密码就可以了，然而我的死活就是不行 尝试加入一些'
 permalink: '/2016/04/21/2016-04-21-raspberry-wifi-problems/'
-categories: 
-  - '2016-04'
+categories:
+  - '树莓派'
 tags: 
   - '树莓派'
   - 'wifi'

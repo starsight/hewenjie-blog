@@ -3,8 +3,8 @@ title: 'Raspberry Pi 3 编译opencv'
 pubDate: '2016-04-30'
 description: 'OpenCV的全称是：Open Source Computer Vision Library。OpenCV是一个基于（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows和Mac OS操作系统上。它轻量级而且高效——由一系列C函数和少量C++类构成，同时提供了Python、Ruby、MATLAB等语言的'
 permalink: '/2016/04/30/2016-04-30-raspberry-opencv-install/'
-categories: 
-  - '2016-04'
+categories:
+  - '树莓派'
 tags: 
   - '树莓派'
   - '编译opencv'

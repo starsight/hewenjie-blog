@@ -3,7 +3,8 @@ title: "Android App 安全模式与连续崩溃自恢复设计"
 pubDate: 2025-01-05 20:42:44 +0800
 description: "围绕连续 crash、启动阶段异常和高风险缓存，整理一套 Android App 安全模式与自恢复机制的设计思路。"
 permalink: "/2025/01/05/android-safe-mode-crash-recovery/"
-categories: ["Android"]
+categories:
+  - 'Android'
 tags: ["Android", "稳定性", "Crash", "安全模式", "工程复盘"]
 ---
 

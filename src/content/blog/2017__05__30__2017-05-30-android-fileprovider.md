@@ -3,8 +3,8 @@ title: 'Android7.0完美适配——FileProvider拍照裁剪全解析'
 pubDate: '2017-05-30'
 description: '在做android7.0的适配时，发现拍照裁剪图片等功能莫名其妙地崩溃了。通过观察控制台的崩溃记录，原因很明显，file:// 不被允许作为一个附加的 Uri 的意图，否则会抛出 FileUriExposedException，接下来就依次适配之。 FileProvider介绍 官方对于 FileProvider 的解'
 permalink: '/2017/05/30/2017-05-30-android-fileprovider/'
-categories: 
-  - '2017-05'
+categories:
+  - 'Android'
 tags: 
   - 'android'
   - 'FileProvider'

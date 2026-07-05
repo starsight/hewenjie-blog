@@ -3,8 +3,8 @@ title: 'Raspberry Pi 3 opencv+python的人脸识别'
 pubDate: '2016-05-01'
 description: '上次安装了opencv库，这次我们来使用一下。 安装PIL库 接下来只要运行python xx.py 过一会，如果图片内有人的话生成一个文件夹，里面有一张人脸的截图和一张人脸的标识图。 以下为示例： 接下来用一下摄像头： 在 process(“kobe.jpg”) 前面加一句: 看一下效果： 光线不好还是能认出来，说明'
 permalink: '/2016/05/01/2016-05-01-raspberry-identify-face/'
-categories: 
-  - '2016-05'
+categories:
+  - '树莓派'
 tags: 
   - '树莓派'
   - 'opencv'

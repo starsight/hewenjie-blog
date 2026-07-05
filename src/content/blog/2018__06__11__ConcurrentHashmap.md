@@ -3,8 +3,8 @@ title: 'ConcurrentHashmap拾遗'
 pubDate: '2018-06-11'
 description: '为什么Hashtable ConcurrentHashmap不支持key或者value为null？ 在很多java资料中，都有提到 ConcurrentHashmap HashMap和Hashtable都是key-value存储结构，但他们有一个不同点是 ConcurrentHashmap、Hashtable不支持ke'
 permalink: '/2018/06/11/ConcurrentHashmap/'
-categories: 
-  - '2018-06'
+categories:
+  - '编程'
 tags: 
   - 'Java'
   - '集合'

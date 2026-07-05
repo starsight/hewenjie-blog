@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatPostDate, formatPostStats, getPostStats } from '../../lib/postStats';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -16,7 +17,9 @@ const groups = Map.groupBy(posts, (post) => String(post.data.pubDate.getFullYear
       <div class="post-list">
         {yearPosts.map((post) => (
           <a class="post-item" href={post.data.permalink}>
-            <p class="post-meta">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+            <p class="post-meta">
+              {formatPostDate(post.data.pubDate)} · {formatPostStats(getPostStats(post.body))}
+            </p>
             <h2>{post.data.title}</h2>
           </a>
         ))}

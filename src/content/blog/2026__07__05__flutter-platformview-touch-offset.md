@@ -3,7 +3,8 @@ title: "Flutter PlatformView 点击坐标错位问题排查"
 pubDate: 2025-01-05 20:42:44 +0800
 description: "一次 Flutter PlatformView 嵌入原生地图后点击坐标错位的排查记录，核心问题来自 Flutter 逻辑坐标和 Android density 的转换边界。"
 permalink: "/2025/01/05/flutter-platformview-touch-offset/"
-categories: ["Android"]
+categories:
+  - 'Android'
 tags: ["Android", "Flutter", "PlatformView", "事件分发", "问题排查"]
 ---
 

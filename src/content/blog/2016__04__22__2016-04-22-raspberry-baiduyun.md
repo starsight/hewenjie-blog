@@ -3,8 +3,8 @@ title: 'Raspberry Pi 3 中文显示及输入+百度云传输'
 pubDate: '2016-04-22'
 description: '树莓派系统显示中文的话，大部分都是一个的小方块，还好我们有非常无私的开源者： 文泉驿的开源中文字体，树莓派全网唯一的开源中文字体库 能显示中文，输入也是必不可少的： 快捷键也是Ctrl+空格 然后选择第五项Internationalisation Options，change_locale，在Default local'
 permalink: '/2016/04/22/2016-04-22-raspberry-baiduyun/'
-categories: 
-  - '2016-04'
+categories:
+  - '树莓派'
 tags: 
   - '树莓派'
   - '中文显示输入'

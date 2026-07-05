@@ -3,8 +3,8 @@ title: 'IntelliJ IDEA下使用默认Spring MVC框架运行失败的解决方案'
 pubDate: '2017-04-28'
 description: 'IntelliJ IDEA下导入Spring MVC框架，直接运行失败，下面说明一下具体的解决步骤。 使用IDEA，直接导入Spring MVC框架 目录结构： web.xml dispatcher-servlet.xml 在WEB-INF/jsp目录下创建hello.jsp src目录下创建com.wenjiehe.'
 permalink: '/2017/04/28/2017-04-28-idea-spring-demo-solutions/'
-categories: 
-  - '2017-04'
+categories:
+  - '编程'
 tags: 
   - 'Spring MVC'
   - 'IntelliJ'

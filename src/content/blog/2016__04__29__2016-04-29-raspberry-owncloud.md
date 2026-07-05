@@ -3,8 +3,8 @@ title: 'Raspberry Pi 3 使用owncloud云服务'
 pubDate: '2016-04-29'
 description: '我们将要搭建自己的云系统平台，更精确的说是一个云存储系统，正如上面的产品所提供的功能。我们将使用开源软件ownCloud来搭建自己的私有云。ownCloud 起源于一个叫The KDE 云计算项目，现在已经适用于大多主流平台，它最早是KED的开发者Frank Karlitschek 创建的，现在由一个ownCloud '
 permalink: '/2016/04/29/2016-04-29-raspberry-owncloud/'
-categories: 
-  - '2016-04'
+categories:
+  - '树莓派'
 tags: 
   - '树莓派'
   - '云服务'

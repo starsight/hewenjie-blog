@@ -3,8 +3,8 @@ title: 'Raspberry Pi 3 开箱+扩容+samba'
 pubDate: '2016-04-20'
 description: '昨儿树莓3到手，今天先用了下电阻屏，帖子在此 ，花了些时间，今晚重点吧树莓基础环境先搭建下。 开箱图： Pi3和微雪的屏 说明书多国语言： 正面照： 背面： 这个3的卡槽由以前的弹出式变成现在直插的，安装时候没有弹簧按压声。 安装很简单，去 http://downloads.raspberrypi.org/raspbi'
 permalink: '/2016/04/20/2016-04-20-raspberry-dilatation-and-samba/'
-categories: 
-  - '2016-04'
+categories:
+  - '树莓派'
 tags: 
   - '树莓派'
   - '扩容'

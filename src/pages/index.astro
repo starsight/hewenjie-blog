@@ -1,10 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPostDate, formatPostStats, getPostStats } from '../lib/postStats';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const postsWithMeta = posts.map((post) => {
+  const categorySet = new Set(post.data.categories.map((category) => category.toLowerCase()));
+  return {
+    post,
+    stats: formatPostStats(getPostStats(post.body)),
+    visibleTags: post.data.tags.filter((tag) => !categorySet.has(tag.toLowerCase()))
+  };
+});
 ---
 
 <BaseLayout>
@@ -12,13 +21,16 @@ const posts = (await getCollection('blog')).sort(
     <h1 class="page-title">文章</h1>
   </section>
   <section class="post-list">
-    {posts.map((post) => (
+    {postsWithMeta.map(({ post, stats, visibleTags }) => (
       <a class="post-item" href={post.data.permalink}>
-        <p class="post-meta">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+        <p class="post-meta">
+          {formatPostDate(post.data.pubDate)} · {stats}
+        </p>
         <h2>{post.data.title}</h2>
         {post.data.description && <p>{post.data.description}</p>}
         <div class="chips">
-          {post.data.tags.slice(0, 4).map((tag) => <span class="chip">#{tag}</span>)}
+          {post.data.categories.slice(0, 2).map((category) => <span class="chip">{category}</span>)}
+          {visibleTags.slice(0, 4).map((tag) => <span class="chip">#{tag}</span>)}
         </div>
       </a>
     ))}

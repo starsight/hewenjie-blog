@@ -3,8 +3,8 @@ title: 'LeetCode【82. Remove Duplicates from Sorted List II】'
 pubDate: '2018-01-11'
 description: '本文的题目是一道中等难度题（82题），之前没有注意删除头结点时的技巧。 题目内容 Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the origin'
 permalink: '/2018/01/11/2018-01-11-Remove-Duplicates-from-Sorted-List/'
-categories: 
-  - '2018-01'
+categories:
+  - '编程'
 tags: 
   - 'LeetCode'
   - '链表'

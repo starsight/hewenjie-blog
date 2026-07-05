@@ -3,8 +3,8 @@ title: '翻页效果的RecyclerView'
 pubDate: '2018-07-20'
 description: '实现一个自定义LayoutManager，默认只有一个抽象方法，实现的重点在于onLayoutChildren对页面的布局和滑动操作，当然还有缓存。 属性定义 mPosition是当前item的位置信息，mPositionOffset是偏移信息，mMinVy是最低的y方向的速度，这个需要根据不同屏幕尺寸来定。 布局流程'
 permalink: '/2018/07/20/Flip-RecyclerView/'
-categories: 
-  - '2018-07'
+categories:
+  - 'Android'
 tags: 
   - 'android'
   - 'recycleView'

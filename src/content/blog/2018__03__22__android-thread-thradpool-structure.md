@@ -3,8 +3,8 @@ title: '【Android面试特辑】Android线程与线程池总结回顾'
 pubDate: '2018-03-22'
 description: '总结一下Android中Thread和ThreadPool的内容，建议保存图片查看，欢迎补充。'
 permalink: '/2018/03/22/android-thread-thradpool-structure/'
-categories: 
-  - '2018-03'
+categories:
+  - 'Android'
 tags: 
   - 'android'
   - 'Thread'
