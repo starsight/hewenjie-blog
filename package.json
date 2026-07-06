@@ -10,7 +10,7 @@
     "migrate:posts": "node scripts/migrate-posts.mjs"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "22.x"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
