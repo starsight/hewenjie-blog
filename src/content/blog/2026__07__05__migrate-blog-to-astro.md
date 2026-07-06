@@ -123,7 +123,7 @@ starsight/hewenjie-blog
 Vercel 项目也已经创建并部署成功，当前访问地址是：
 
 ```text
-https://hewenjie.vercel.app
+https://hewenjie.top
 ```
 
 这里还有一个没完全收尾的点：Vercel 项目目前是通过 CLI 部署成功的，还没有正式连接 GitHub 自动部署。

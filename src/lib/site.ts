@@ -2,7 +2,7 @@ export const site = {
   name: '贺文杰的博客',
   title: '贺文杰的博客',
   description: 'Android、工程实践、个人写作与旧文归档。',
-  url: 'https://hewenjie.vercel.app',
+  url: 'https://hewenjie.top',
   author: '贺文杰',
   authorUrl: 'https://github.com/starsight',
   defaultImage: '/images/starsight.png',
