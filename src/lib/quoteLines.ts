@@ -18,7 +18,7 @@ export const quoteLines: QuoteLine[] = [
     id: 'typos-human-writing',
     text: '错别字是AI时代的人类撰写声明。',
     source: 'flomo #博客',
-    scenes: ['post', 'about']
+    scenes: ['post', 'home', 'about']
   },
   {
     id: 'online-offline-trust',
