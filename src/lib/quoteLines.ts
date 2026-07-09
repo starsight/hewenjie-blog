@@ -18,7 +18,7 @@ export const quoteLines: QuoteLine[] = [
     id: 'typos-human-writing',
     text: '错别字是AI时代的人类撰写声明。',
     source: 'flomo #博客',
-    scenes: ['home', 'post', 'about']
+    scenes: ['post', 'about']
   },
   {
     id: 'online-offline-trust',
@@ -30,13 +30,115 @@ export const quoteLines: QuoteLine[] = [
     id: 'always-leave',
     text: '谁也不会在出生的地方呆一辈子，我们总要离开。',
     source: 'flomo #生活',
-    scenes: ['home', 'about', 'archive']
+    scenes: ['about', 'archive']
   },
   {
     id: 'east-wind-moon',
     text: '便邀东风揽明月，春不许，再回头。',
     source: 'flomo #诗词',
     scenes: ['home', 'about']
+  },
+  {
+    id: 'cloud-shadow-rain',
+    text: '平将云影弄风月，妄得烟雨换波澜。',
+    source: '#文杰',
+    scenes: ['home', 'about', 'archive']
+  },
+  {
+    id: 'truth-not-all',
+    text: '不说假话，真话不全说。',
+    source: '#文杰',
+    scenes: ['post', 'about', 'taxonomy']
+  },
+  {
+    id: 'distant-river-homes',
+    text: '隔浦望人家，遥遥不相识。',
+    source: '#诗人十四个',
+    scenes: ['post', 'archive']
+  },
+  {
+    id: 'south-north-roads',
+    text: '人生南北多歧路，君向潇湘我向秦。',
+    source: 'flomo #诗词',
+    scenes: ['site', 'archive']
+  },
+  {
+    id: 'lotus-boat-meeting',
+    text: '相逢畏相失，并着采莲舟。',
+    source: 'flomo #诗词',
+    scenes: ['home', 'about', 'archive']
+  },
+  {
+    id: 'young-worry-old-calm',
+    text: '少年忧世成狂疾，老至无能始达观。',
+    source: 'flomo #诗词',
+    scenes: ['post', 'archive']
+  },
+  {
+    id: 'silk-not-silkworm',
+    text: '遍身罗绮者，不是养蚕人。',
+    source: 'flomo #诗词',
+    scenes: ['post', 'taxonomy']
+  },
+  {
+    id: 'rain-spring-summer',
+    text: '连雨不知春早去，一晴方觉夏已深。',
+    source: 'flomo #诗词',
+    scenes: ['home', 'about', 'archive']
+  },
+  {
+    id: 'time-fate-hero',
+    text: '时来天地皆同力，运去英雄不自由。',
+    source: 'flomo #诗词',
+    scenes: ['post', 'archive', 'taxonomy']
+  },
+  {
+    id: 'snow-ridge-sad-geese',
+    text: '雪岭日色死，霜鸿有馀哀。',
+    source: 'flomo #诗词',
+    scenes: ['post', 'archive']
+  },
+  {
+    id: 'limited-years',
+    text: '一向年光有限身，等闲离别易销魂。',
+    source: 'flomo #诗词',
+    scenes: ['post', 'archive']
+  },
+  {
+    id: 'osmanthus-wine-youth',
+    text: '欲买桂花同载酒，终不似，少年游。',
+    source: 'flomo #诗词',
+    scenes: ['home', 'about', 'archive']
+  },
+  {
+    id: 'snow-white-head',
+    text: '君埋泉下泥销骨，我寄人间雪满头。',
+    source: 'flomo #诗词',
+    scenes: ['post', 'archive']
+  },
+  {
+    id: 'orange-winter-heart',
+    text: '江南有丹橘，经冬犹绿林。岂伊地气暖，自有岁寒心。',
+    source: 'flomo #诗人十四个',
+    scenes: ['home', 'about', 'archive']
+  },
+  {
+    id: 'choice-from-travel',
+    text: '当你想过这些，然后打算回到目前的生活中，那其实你把一个被迫的过程，变成了你的一种选择。',
+    source: 'flomo #诗人十四个',
+    scenes: ['home', 'about']
+  },
+  {
+    id: 'social-media-concept',
+    text: '当你在滑社交媒体，你以为你得到了它，其实你失去了它。',
+    source: 'flomo #诗人十四个',
+    scenes: ['post', 'taxonomy']
+  },
+  {
+    id: 'happiness-plain',
+    text: '我们可能也过得很好，但如果是通过很多谋划、努力和取舍得来的，幸福就显得平淡。',
+    source: 'flomo #诗人十四个',
+    scenes: ['post', 'about', 'archive']
   },
   {
     id: 'live-well',
@@ -102,7 +204,7 @@ export const quoteLines: QuoteLine[] = [
     id: 'snow-mud',
     text: '人生到处何所似，应似飞鸿踏雪泥。',
     source: '苏轼',
-    scenes: ['archive', 'post']
+    scenes: ['archive', 'site']
   },
   {
     id: 'slow-water',
