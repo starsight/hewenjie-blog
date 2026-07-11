@@ -24,6 +24,7 @@
     "@rollup/rollup-darwin-arm64": "^4.62.2"
   },
   "devDependencies": {
+    "@astrojs/markdown-remark": "^7.2.1",
     "pagefind": "1.5.2"
   }
 }

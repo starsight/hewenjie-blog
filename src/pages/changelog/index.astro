@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { changelog } from '../../lib/changelog';
+---
+
+<BaseLayout
+  title="更新记录 | 贺文杰的博客"
+  description="贺文杰博客的重要更新记录。"
+  canonicalPath="/changelog/"
+>
+  <section class="changelog-page">
+    <h1 class="page-title">更新记录</h1>
+    <p class="page-subtitle">只记录会影响阅读、检索或站点使用方式的重要更新。</p>
+    <div class="changelog-list">
+      {changelog.map((entry) => (
+        <article class="changelog-entry">
+          <p class="post-meta">{entry.date}</p>
+          <h2>{entry.title}</h2>
+          <ul>
+            {entry.changes.map((change) => <li>{change}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

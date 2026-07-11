@@ -16,9 +16,8 @@ const postCount = (await getCollection('blog')).length;
     <p class="page-subtitle">在 {postCount} 篇文章中搜索标题、正文和关键词。</p>
     <pagefind-searchbox
       placeholder="搜索文章"
-      max-results="12"
+      max-results="6"
       show-sub-results
-      autofocus
     ></pagefind-searchbox>
   </section>
 </BaseLayout>
