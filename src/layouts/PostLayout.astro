@@ -2,7 +2,9 @@
 import BaseLayout from './BaseLayout.astro';
 import QuoteLine from '../components/QuoteLine.astro';
 import { formatPostStats, getPostStats } from '../lib/postStats';
+import { getCollection } from 'astro:content';
 import { absoluteUrl, site } from '../lib/site';
+import { getCoreTags, getVisibleTags, normalizeTag, tagPath } from '../lib/tags';
 
 const { entry } = Astro.props;
 const { title, pubDate, updatedDate, tags, categories } = entry.data as {
@@ -15,7 +17,10 @@ const { title, pubDate, updatedDate, tags, categories } = entry.data as {
 const date = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(pubDate);
 const stats = formatPostStats(getPostStats(entry.body));
 const categorySet = new Set(categories.map((category) => category.toLowerCase()));
-const visibleTags = tags.filter((tag) => !categorySet.has(tag.toLowerCase()));
+const coreTags = new Set(getCoreTags(await getCollection('blog')).map((tag) => tag.name));
+const visibleTags = getVisibleTags(tags).filter(
+  (tag) => coreTags.has(tag) && !categorySet.has(normalizeTag(tag).toLowerCase())
+);
 const description = entry.data.description ?? title;
 const canonicalUrl = absoluteUrl(entry.data.permalink);
 const keywords = [...new Set([...categories, ...tags])];
@@ -54,12 +59,12 @@ const structuredData = {
   canonicalPath={entry.data.permalink}
   structuredData={structuredData}
 >
-  <article class="post">
+  <article class="post" data-pagefind-body>
     <p class="post-meta">{date} · {stats}</p>
     <h1>{title}</h1>
     <div class="chips">
       {categories.map((category) => <a class="chip" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>)}
-      {visibleTags.map((tag) => <a class="chip" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+      {visibleTags.map((tag) => <a class="chip" href={tagPath(tag)}>#{tag}</a>)}
     </div>
     <QuoteLine scenes={['post']} compact />
     <div class="post-content">

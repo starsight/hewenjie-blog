@@ -3,20 +3,25 @@ import { getCollection } from 'astro:content';
 import QuoteLine from '../../components/QuoteLine.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatPostDate, formatPostStats, getPostStats } from '../../lib/postStats';
+import { normalizeTag, tagPath } from '../../lib/tags';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
-  return tags.map((tag) => ({ params: { tag }, props: { tag } }));
+  return tags.map((tag) => ({ params: { tag }, props: { tag: normalizeTag(tag) } }));
 }
 
 const { tag } = Astro.props;
 const posts = (await getCollection('blog'))
-  .filter((post) => post.data.tags.includes(tag))
+  .filter((post) => post.data.tags.some((postTag) => normalizeTag(postTag) === tag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={`#${tag} | 贺文杰的博客`} description={`浏览贺文杰博客中与 ${tag} 相关的文章。`}>
+<BaseLayout
+  title={`#${tag} | 贺文杰的博客`}
+  description={`浏览贺文杰博客中与 ${tag} 相关的文章。`}
+  canonicalPath={tagPath(tag)}
+>
   <h1 class="page-title">#{tag}</h1>
   <QuoteLine scenes={['taxonomy']} compact />
   <section class="post-list">

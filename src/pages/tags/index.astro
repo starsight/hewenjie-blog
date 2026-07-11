@@ -2,15 +2,17 @@
 import { getCollection } from 'astro:content';
 import QuoteLine from '../../components/QuoteLine.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCoreTags, tagPath } from '../../lib/tags';
 
 const posts = await getCollection('blog');
-const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+const tags = getCoreTags(posts);
 ---
 
 <BaseLayout title="标签 | 贺文杰的博客" description="按标签浏览贺文杰博客中的 Android、编程、树莓派、随笔和博客迁移文章。">
   <h1 class="page-title">标签</h1>
   <QuoteLine scenes={['taxonomy']} />
+  <p class="page-subtitle">展示至少关联两篇文章的主题；其他关键词可直接搜索。</p>
   <div class="term-grid">
-    {tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+    {tags.map((tag) => <a href={tagPath(tag.name)}>#{tag.name} <span class="term-count">{tag.count}</span></a>)}
   </div>
 </BaseLayout>

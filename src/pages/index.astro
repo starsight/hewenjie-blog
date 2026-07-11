@@ -4,16 +4,20 @@ import QuoteLine from '../components/QuoteLine.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatPostDate, formatPostStats, getPostStats } from '../lib/postStats';
 import { absoluteUrl, site } from '../lib/site';
+import { getCoreTags, getVisibleTags, normalizeTag } from '../lib/tags';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const coreTags = new Set(getCoreTags(posts).map((tag) => tag.name));
 const postsWithMeta = posts.map((post) => {
   const categorySet = new Set(post.data.categories.map((category) => category.toLowerCase()));
   return {
     post,
     stats: formatPostStats(getPostStats(post.body)),
-    visibleTags: post.data.tags.filter((tag) => !categorySet.has(tag.toLowerCase()))
+    visibleTags: getVisibleTags(post.data.tags).filter(
+      (tag) => coreTags.has(tag) && !categorySet.has(normalizeTag(tag).toLowerCase())
+    )
   };
 });
 const structuredData = {

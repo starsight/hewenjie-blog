@@ -10,6 +10,7 @@ interface Props {
   type?: 'website' | 'article' | 'profile';
   canonicalPath?: string;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  pagefind?: boolean;
 }
 
 const {
@@ -18,7 +19,8 @@ const {
   image = site.defaultImage,
   type = 'website',
   canonicalPath,
-  structuredData
+  structuredData,
+  pagefind = false
 } = Astro.props;
 const canonicalUrl = absoluteUrl(canonicalPath ?? normalizeCanonical(Astro.url.pathname));
 const imageUrl = absoluteUrl(image);
@@ -36,6 +38,7 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : undefined;
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href={absoluteUrl('/rss.xml')} />
+    {pagefind && <link rel="stylesheet" href="/pagefind/pagefind-component-ui.css" />}
     <meta property="og:site_name" content={site.name} />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
@@ -47,6 +50,7 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : undefined;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
+    {pagefind && <script is:inline src="/pagefind/pagefind-component-ui.js" type="module"></script>}
     {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}
     <Analytics />
     <title>{title}</title>
@@ -289,6 +293,19 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : undefined;
       .term-count {
         color: var(--muted);
         font-size: 13px;
+      }
+
+      .search-page {
+        max-width: 820px;
+      }
+
+      .search-page pagefind-searchbox {
+        display: block;
+        margin-top: 32px;
+        --pagefind-ui-primary: var(--accent);
+        --pagefind-ui-text: var(--text);
+        --pagefind-ui-background: var(--paper);
+        --pagefind-ui-border: var(--line);
       }
 
       .about-hero {
